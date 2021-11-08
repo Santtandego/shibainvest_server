@@ -1,11 +1,15 @@
 const express = require('express')
-require('dotenv').config()
+const router = require('./router/router')
+
+const config = require('./config/config')
+const strings = require('./config/strings')
 
 const app = express()
+app.use('', require('./router/router'))
 
-app.listen(process.env.PORT || 3612, (err) => {
+app.listen(config.port, (err) => {
 
     if ( err ) throw new Error(err);
 
-    console.log( 'server running on:' , process.env.PORT);
+    console.log( strings.server_running , config.port);
 })
